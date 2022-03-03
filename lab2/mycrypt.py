@@ -1,7 +1,7 @@
 import codecs
 
 def encode(s):
-    if s == '+' or s== 'åäö':
+    if s in ['+', '-', 'å', 'ä', 'ö', 'åäö']:
         raise ValueError
     if not isinstance(s,str):
         raise TypeError
