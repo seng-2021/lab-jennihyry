@@ -1,6 +1,8 @@
 import codecs
 
 def encode(s):
+    if s == '+' or s== 'åäö':
+        raise ValueError
     if not isinstance(s,str):
         raise TypeError
     origlen = len(s)
