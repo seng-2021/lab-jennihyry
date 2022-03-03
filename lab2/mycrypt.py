@@ -1,8 +1,6 @@
 import codecs
 
 def encode(s):
-    if s in ['+', '-', 'å', 'ä', 'ö', 'åäö']:
-        raise ValueError
     if not isinstance(s,str):
         raise TypeError
     origlen = len(s)
@@ -12,6 +10,8 @@ def encode(s):
         raise ValueError
     s = s.ljust(1000, 'a')      #padding
     for c in s:
+        if c in ['+', '-', 'å', 'ä', 'ö']:
+            raise ValueError
         if c.isalpha():
             if c.islower():
                 c=c.upper()
@@ -25,4 +25,3 @@ def encode(s):
 def decode(s):
     s = encode(s).lower()
     return s
-
